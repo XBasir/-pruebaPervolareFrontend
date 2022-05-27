@@ -6,13 +6,12 @@ import { CategoryIndexComponent } from './category-index/category-index.componen
 import { CategoryTreeComponent } from './category-tree/category-tree.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryEditComponent } from './category-edit/category-edit.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
 import { CategoryRestService } from './category-rest.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
-
 @NgModule({
-  declarations: [CategoryIndexComponent, CategoryCreateComponent, CategoryEditComponent, CategoryTreeComponent],
+  declarations: [CategoryIndexComponent, CategoryCreateComponent, CategoryEditComponent, CategoryTreeComponent, CategoryViewComponent],
   imports: [
     CommonModule,
     CategoryRoutingModule,

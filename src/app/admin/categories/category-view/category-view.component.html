@@ -1,0 +1,101 @@
+<div class="row">
+        <div class="col-md-12">
+                <h4 class="remove-margin">View Category </h4>
+                <div class="card">
+                  <div class="card-header">
+                    <!-- <h5 class="card-title">Edit Profile</h5> -->
+                  </div>
+                  <div class="card-body">
+                    <form [formGroup]="registerForm" (ngSubmit)="registerCategory()">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="exampleInputTitle1">Title</label>
+                              <input formControlName="title" class="form-control" placeholder="title" disabled>
+                                                            
+                              <div *ngIf="title.invalid && (title.dirty || title.touched)"
+                                      class="form-text text-muted">
+                                    <div *ngIf="title.errors?.required">
+                                      title is required.
+                                    </div>
+                                    <div *ngIf="title.errors?.minlength">
+                                      title must be at least 2 characters long.
+                                    </div>
+                                    <div *ngIf="title.errors?.maxlength">
+                                      title must have less than 11 characters.
+                                    </div>
+                                    <div *ngIf="title.errors?.pattern">
+                                      title can only have alphanumeric characters
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="exampleInputCode1">Code</label>
+                              <input formControlName="code" class="form-control" placeholder="code" disabled>
+                                                            
+                              <div *ngIf="code.invalid && (code.dirty || code.touched)"
+                                      class="form-text text-muted">
+                                    <div *ngIf="code.errors?.required">
+                                      code is required.
+                                    </div>
+                                    <div *ngIf="code.errors?.minlength">
+                                      code must be at least 2 characters long.
+                                    </div>
+                                    <div *ngIf="code.errors?.maxlength">
+                                      code must have less than 11 characters.
+                                    </div>
+                                    <div *ngIf="code.errors?.pattern">
+                                      code can only have alphanumeric characters
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="exampleInputdescription1">description</label>
+                              <input formControlName="description" class="form-control" placeholder="description" disabled>
+                                                            
+                              <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                                      class="form-text text-muted">
+                                    <div *ngIf="description.errors?.required">
+                                      description is required.
+                                    </div>
+                                    <div *ngIf="description.errors?.minlength">
+                                      description must be at least 10 characters long.
+                                    </div>
+                                    <div *ngIf="description.errors?.maxlength">
+                                      description must have less than 501 characters.
+                                    </div>
+                                    <div *ngIf="description.errors?.pattern">
+                                      description can only have alphanumeric characters
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label for="exampleInputParent1">Parent Category</label>
+                              <select formControlName="idParentCategory" style="display: bloc; width: 100%" disabled>
+                                <option [value]="null">
+                                  None parent category
+                                </option>
+                                <option *ngFor="let category of categoryList" [value]="category.id">
+                                  {{ category.title }}
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
+</div>

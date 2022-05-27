@@ -22,7 +22,12 @@ export class UserIndexComponent implements OnInit {
   deleteUser(id: number) {
     if(confirm("Are you sure to delete ")) {
       this.userRest.deleteUser(id).subscribe(
-        (response) => console.log(response),
+        (response) => {
+          this.userRest.getUsers().subscribe(
+            (response) => { console.log(this.userList = response.user); },
+            (error) => { console.log(error) }
+           );
+        },
         (error) => console.log(error)
       );
     }

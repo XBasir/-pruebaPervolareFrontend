@@ -33,6 +33,10 @@ export class CategoryIndexComponent implements OnInit {
   }
 
   editCategory(id: number) {
-    this.router.navigate(['categorys/edit',id]);
+    this.router.navigate(['categories/edit',id]);
+  }
+
+  viewCategory(id: number) {
+    this.router.navigate(['categories/view',id]);
   }
 }

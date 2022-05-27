@@ -11,6 +11,10 @@ export class CategoryRestService {
   getCategories(): Observable<any> {
     return this.http.get('http://localhost/laravelAngularApi/public/api/categories');
   }
+
+  getCategory(id): Observable<any> {
+    return this.http.get('http://localhost/laravelAngularApi/public/api/categories/' + id);
+  }
   
   editCategory(id): Observable<any> {
     return this.http.get('http://localhost/laravelAngularApi/public/api/categories/' + id);

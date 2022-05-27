@@ -1,41 +1,106 @@
 <div class="row">
-    <div class="col-md-12">
-            <h4 class="remove-margin">Edit User Detail </h4>
-            <div class="card">
-              <div class="card-header">
-                <!-- <h5 class="card-title">Edit Profile</h5> -->
-              </div>
-              <div class="card-body">
-                <form [formGroup]="updateUser" (ngSubmit)="updateUserDetails()">
-                          
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" formControlName="email" class="form-control" placeholder="Email" required>
-                          
-                          <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                                  class="form-text text-muted">
-                                <div *ngIf="email.errors?.required">
-                                  Email is required.
-                                </div>
-                                <div *ngIf="email.errors?.email">
-                                  Invalid email address.
-                                </div>
-                          </div> 
-
-                          <small id="emailHelp" class="form-text text-muted" *ngIf="serverErrors">{{ serverErrors.email }}</small>
+  <div class="col-md-12">
+          <h4 class="remove-margin">Edit Category </h4>
+          <div class="card">
+            <div class="card-header">
+              <!-- <h5 class="card-title">Edit Profile</h5> -->
+            </div>
+            <div class="card-body">
+              <form [formGroup]="registerForm" (ngSubmit)="updateCategory()">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="exampleInputTitle1">Title</label>
+                        <input formControlName="title" class="form-control" placeholder="title" required>
+                                                      
+                        <div *ngIf="title.invalid && (title.dirty || title.touched)"
+                                class="form-text text-muted">
+                              <div *ngIf="title.errors?.required">
+                                title is required.
+                              </div>
+                              <div *ngIf="title.errors?.minlength">
+                                title must be at least 2 characters long.
+                              </div>
+                              <div *ngIf="title.errors?.maxlength">
+                                title must have less than 11 characters.
+                              </div>
+                              <div *ngIf="title.errors?.pattern">
+                                title can only have alphanumeric characters
+                              </div>
                         </div>
                       </div>
                     </div>
-                   
-                    <div class="row">
-                      <div class="update ml-auto mr-auto">
-                        <button type="submit" class="btn btn-primary btn-round" [disabled]="!updateUser.valid">Update</button>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="exampleInputCode1">Code</label>
+                        <input formControlName="code" class="form-control" placeholder="code" required>
+                                                      
+                        <div *ngIf="code.invalid && (code.dirty || code.touched)"
+                                class="form-text text-muted">
+                              <div *ngIf="code.errors?.required">
+                                code is required.
+                              </div>
+                              <div *ngIf="code.errors?.minlength">
+                                code must be at least 2 characters long.
+                              </div>
+                              <div *ngIf="code.errors?.maxlength">
+                                code must have less than 11 characters.
+                              </div>
+                              <div *ngIf="code.errors?.pattern">
+                                code can only have alphanumeric characters
+                              </div>
+                        </div>
                       </div>
                     </div>
-                  </form>
-              </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="exampleInputdescription1">description</label>
+                        <input formControlName="description" class="form-control" placeholder="description" required>
+                                                      
+                        <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                                class="form-text text-muted">
+                              <div *ngIf="description.errors?.required">
+                                description is required.
+                              </div>
+                              <div *ngIf="description.errors?.minlength">
+                                description must be at least 10 characters long.
+                              </div>
+                              <div *ngIf="description.errors?.maxlength">
+                                description must have less than 501 characters.
+                              </div>
+                              <div *ngIf="description.errors?.pattern">
+                                description can only have alphanumeric characters
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="exampleInputParent1">Parent Category</label>
+                        <select formControlName="idParentCategory" style="display: bloc; width: 100%">
+                          <option [value]="null">
+                            None parent category
+                          </option>
+                          <option *ngFor="let category of categoryList" [value]="category.id">
+                            {{ category.title }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                      <button type="submit" class="btn btn-primary btn-round" [disabled]="!registerForm.valid">Update</button>
+                    </div>
+                  </div>
+                </form>
             </div>
           </div>
+        </div>
 </div>
