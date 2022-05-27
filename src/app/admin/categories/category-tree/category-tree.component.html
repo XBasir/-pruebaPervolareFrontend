@@ -3,10 +3,18 @@
             <h4 class="remove-margin"> Categories Tree </h4>
       <div class="card">
         <div class="card-body">
-            <div *ngFor="let node of tree; let i = index">
-                <p>| {{node.title}}</p>
-                <div *ngIf="node.children.length > 0">
-                  <p *ngFor="let nodeSpec of node.children; let j = index">---- | {{nodeSpec.title}}</p>
+            <div *ngFor="let node of finalTree; let i = index">
+                <div *ngIf="node.line === 1">
+                  <p>| {{node.title}}</p>
+                </div>
+                <div *ngIf="node.line === 2">
+                  <p>| ----- | {{node.title}}</p>
+                </div>
+                <div *ngIf="node.line === 3">
+                  <p>| ----- | ----- | {{node.title}}</p>
+                </div>
+                <div *ngIf="node.line === 4">
+                  <p>| ----- | ----- | ----- |{{node.title}}</p>
                 </div>
             </div>
         </div>
