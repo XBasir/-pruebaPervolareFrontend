@@ -45,7 +45,7 @@ export class CategoryCreateComponent implements OnInit {
       this.categoryRest.storeCategory(this.registerForm).subscribe(
         response => {
           console.log(response),
-          this.router.navigate(['categorys'])
+          this.router.navigate(['categories/tree'])
         },
         error =>{
           this.serverErrors = error.error.errors

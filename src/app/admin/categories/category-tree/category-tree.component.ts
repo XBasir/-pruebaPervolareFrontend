@@ -9,6 +9,7 @@ import { CategoryRestService } from '../category-rest.service';
 })
 export class CategoryTreeComponent implements OnInit {
   categoryList: Array<object> = [];
+  tree = [];
 
   constructor(private route: ActivatedRoute, private categoryRest: CategoryRestService, private router: Router) { }
 
@@ -18,21 +19,18 @@ export class CategoryTreeComponent implements OnInit {
 
   loadCategories() {
     this.categoryRest.getCategories().subscribe(
-      (response) => { console.log(this.categoryList = response["category"]); },
+      (response) => { 
+        this.categoryList = response["category"]
+    
+        const nest = (items, id = null, link = 'idParentCategory') =>
+        items
+          .filter(item => item[link] === id)
+          .map(item => ({ ...item, children: nest(items, item.id) }));
+    
+        this.tree = nest(this.categoryList);
+        console.log(this.tree)
+      },
       (error) => { console.log(error) }
      );
-  }
-
-  deleteCategory(id: number) {
-    if(confirm("Are you sure to delete ")) {
-      this.categoryRest.deleteCategory(id).subscribe(
-        (response) => this.loadCategories(),
-        (error) => console.log(error)
-      );
-    }
-  }
-
-  editCategory(id: number) {
-    this.router.navigate(['categorys/edit',id]);
   }
 }

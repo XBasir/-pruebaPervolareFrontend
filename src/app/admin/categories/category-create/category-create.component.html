@@ -84,7 +84,7 @@
                             <div class="form-group">
                               <label for="exampleInputParent1">Parent Category</label>
                               <select formControlName="idParentCategory" style="display: bloc; width: 100%">
-                                <option [value]="">
+                                <option [value]="null">
                                   None parent category
                                 </option>
                                 <option *ngFor="let category of categoryList" [value]="category.id">
